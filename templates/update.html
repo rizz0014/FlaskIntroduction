@@ -1,16 +1,30 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Task Master</title>
+<title>Taskify</title>
 {% endblock %}
 
 {% block body %}
-<div class="content">
-    <h1 style="text-align: center;">Update Task</h1>
 
-    <form action="/update/{{task.id}}" method="POST">
-        <input type="text" name="content" id="content" value="{{task.content}}">
-        <input type="submit" value="Update">
-    </form>
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Taskify</h1>
+
+        <p class="lead text-muted">Update Task</p>
+    </div>
+</section>
+
+<div class="content container">
+
+    <div class="container py-2">
+        <form action="/update/{{task.id}}" method="POST">
+            <input type="text" name="content" id="content" value="{{task.content}}" placeholder="Please name the task...">
+            <input type="submit" value="Update">
+        </form>
+    </div>
+    
+    <div class="container">
+        <a href="{{ url_for('index')}}">Go back</a>
+    </div>
 </div>
 {% endblock %}

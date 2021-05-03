@@ -1,12 +1,27 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Task Master</title>
+<title>Taskify</title>
 {% endblock %}
 
 {% block body %}
-<div class="content">
-    <h1 style="text-align: center;">Task Master</h1>
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Taskify</h1>
+
+        <p class="lead text-muted">This is a simple task tool created to learn Flask, a micro web framework written in Python.</p>
+    </div>
+</section>
+
+
+<div class="content container">
+
+    <div class="container py-2">
+        <form action="/" method="POST">
+            <input type="text" name="content" id="content">
+            <input type="submit" value="Add Task">
+        </form>
+    </div>
 
     {% if tasks|length < 1 %}
 
@@ -14,30 +29,32 @@
 
     {% else %}
 
-    <table>
-        <tr>
-            <th>Task</th>
-            <th>Added</th>
-            <th>Action</th>
-        </tr>
-        {% for task in tasks %}
-            <tr>
-                <td>{{ task.content }}</td>
-                <td>{{ task.date_created.date() }}</td>
-                <td>
-                    <a href="/delete/{{task.id}}">Delete</a>
-                    <br>
-                    <a href="/update/{{task.id}}">Update</a>
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
+    <div class="table-responsive justify-content-center">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Task</th>
+                    <th scope="col">Added</th>
+                    <th scope="col">Action</th>
+                </tr>            
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                <tr>
+                    <th scrope="row">{{ task.content }}</td>
+                    <td>{{ task.date_created.date() }}</td>
+                    <td>
+                        <a href="/delete/{{task.id}}">Delete</a>
+                        <a href="/update/{{task.id}}">Update</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>        
+        </table>
+    </div>
+    
 
     {% endif %}
 
-    <form action="/" method="POST">
-        <input type="text" name="content" id="content">
-        <input type="submit" value="Add Task">
-    </form>
 </div>
 {% endblock %}

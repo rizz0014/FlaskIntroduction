@@ -1,35 +1,50 @@
-body, html {
-    margin: 0;
+body,
+html {
     font-family: sans-serif;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
 }
 
 .content {
-    margin: 0 auto;
-    width: 400px;
-}
-
-table, td, th {
-    border: 1px solid #aaa;
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th {
-    height: 30px;
-}
-
-td {
-    text-align: center;
-    padding: 5px;
+    flex: 1 0 auto;
 }
 
 .form {
     margin-top: 20px;
 }
 
+.table tr {
+    text-align: center;
+} 
+
 #content {
     width: 70%;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    align-content: center;
+    flex-shrink: 0;
+}
+
+/* media social from footer */
+.containerSocial {
+    font-size: 3em;
+    align-content: center;
+}
+
+.nickname {
+    font-size: 1.5em;
+    align-content: center;
+}
+
+
+.copyright {
+    margin-top: 1em;
+    font-size: 0.9em;
 }
